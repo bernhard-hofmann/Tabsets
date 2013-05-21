@@ -1,0 +1,40 @@
+<!doctype HTML>
+<html ng-app="Tabsets">
+<head>
+  <link rel="stylesheet" href="css/popup.css"></style>
+
+  <script src="js/lib/angular.min.js"></script>
+  <script src="js/app/app.js"></script>
+  <script src="js/app/popup.js"></script>
+</head>
+<body>
+<div ng-controller="TabsetsController">
+<h1>{{message}}</h1>
+
+  <label for="newTabsetName">Create a new tab set</label>
+  <input id="newTabsetName" type="text" />
+  <button>Create</button>
+  <hr/>
+  
+  <table>
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Created</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="tabset in tabsets">
+        <td><span ng-click="toggle(tabset)">{{tabset.name}} ({{tabset.tabs.length}})</span>
+			<button>Open</button><button>Delete</button>
+			<ul ng-repeat="tab in tabset.tabs" ng-show="tabset.isExpanded">
+				<li><a target="_blank" href="{{tab.url}}">{{tab.title}} {{tabset.isExpanded}}</li>
+			</ul>
+		</td>
+		<td>{{tabset.created}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

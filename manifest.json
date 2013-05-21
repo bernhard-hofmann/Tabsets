@@ -1,0 +1,26 @@
+{
+	"name": "Tabsets",
+	"version": "1.0",
+	"manifest_version": 2,
+
+	"description": "Stores sets of tabs for later viewing.",
+	"icons": {
+		"16": "icon16.png",
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
+
+	"browser_action": {
+		"default_title": "Tabsets",
+		"default_icon": "icon48.png",
+		"default_popup": "popup.html"
+	},
+
+	"content_scripts": [{
+		"js": ["js/lib/zepto.min.js", "js/app/content.js"],
+		"matches": ["*://*/*"],
+		"run_at": "document_start"
+	}],
+
+	"permissions": ["http://*/*","https://*/*", "storage", "contextMenus", "cookies", "tabs", "notifications"]
+}

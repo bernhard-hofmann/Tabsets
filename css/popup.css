@@ -1,0 +1,32 @@
+body {
+	min-width:380px;
+	margin:12px;
+	-webkit-user-select:none;
+	user-select:none;
+}
+body, button {
+  font-family:Tahoma, Verdana, Sans-Serif;
+  font-size:.7rem;
+}
+table {
+  border:1px solid silver;
+  width:100%
+}
+thead td {
+  background-color:silver;
+  text-align:left;
+  font-weight:bold;
+}
+td {
+  vertical-align:top;
+}
+td:nth-child(2) {
+  text-align:right;
+  width:8rem;
+}
+a {
+  text-decoration:none;
+}
+ul {
+  margin:0;
+}
