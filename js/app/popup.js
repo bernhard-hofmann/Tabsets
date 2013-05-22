@@ -1,6 +1,4 @@
 myApp.controller('TabsetsController', function($scope) {
-	$scope.message = "Greetings!";
-
 		$scope.tabsets = [
 			{
 				name:"AngularJS tuts",
