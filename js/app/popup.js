@@ -1,43 +1,69 @@
 myApp.controller('TabsetsController', function($scope) {
-		$scope.tabsets = [
-			{
-				name:"AngularJS tuts",
-				tabs: [
-					{ url:"http://angularjs.org/#!/", title:"AngularJS — Superheroic JavaScript MVW Framework" },
-					{ url:"http://docs.angularjs.org/#!/tutorial", title:"AngularJS: Tutorial" },
-					{ url:"http://builtwith.angularjs.org/", title:"Built with AngularJS" },
-					{ url:"https://github.com/angular/angular-seed", title:"angular/angular-seed" }
-				],
-				created:"2013-05-21 11:04",
-				isExpanded:false
-			},
-			{
-				name:"Canoe Sailing",
-				tabs: [],
-				created:"2013-05-20 18:46",
-				isExpanded:false
-			},
-			{
-				name:"Bushcrafting",
-				tabs: [],
-				created:"2013-04-12 19:49",
-				isExpanded:false
-			}
-		];
+	chrome.storage.sync.get(null, function(blob) {
+		console.log(blob);
+		$scope.tabsets = blob.tabsets;
+		$scope.$apply();
+	});
 
-		$scope.toggle = function(tabset) {
-			tabset.isExpended = !tabset.isExpended;
+	$scope.toggle = function(tabset) {
+		tabset.isExpended = !tabset.isExpended;
+	}
+
+	$scope.newTabset = function() {
+		var tablist = [];
+		function formattedDateString(d){
+			function pad(n){return n<10 ? '0'+n : n}
+			return d.getUTCFullYear()+'-'+ pad(d.getUTCMonth()+1)+'-'+ pad(d.getUTCDate())+' '
+				+ pad(d.getUTCHours())+':'+ pad(d.getUTCMinutes());
 		}
 
-		$scope.newTabset = function() {
-			console.log($scope.newTabsetName);
+		chrome.tabs.query({currentWindow:true}, function(tabs) {
+			for (var tabIx=0; tabIx<tabs.length; tabIx++) {
+				var tab = tabs[tabIx];
+				tablist.push({
+					title:tab.title,
+					url:tab.url
+				});
+			}
+
+			var formattedDate = formattedDateString(new Date);
 			$scope.tabsets.push({
 				name:$scope.newTabsetName,
-				tabs:[],
-				created:(new Date).toString(),
+				tabs:tablist,
+				created:formattedDate,
 				isExpanded:false
 			});
+
 			$scope.newTabsetName = '';
-			window.close();
+			$scope.$apply();
+
+			chrome.storage.sync.set({'tabsets' : $scope.tabsets});
+			//window.close();
+		});
+	}
+
+	$scope.delTabset = function(tabset) {
+		if (window.confirm("Are you sure you want to remove '"+ tabset.name +"' permanently?")) {
+			var ix = -1;
+			for (i=0;i<$scope.tabsets.length;i++) {
+				if ($scope.tabsets[i].name === tabset.name) {
+					ix = i;
+					break;
+				}
+			}
+			$scope.tabsets.splice(ix,1);
+			$scope.$apply();
+			chrome.storage.sync.set({'tabsets' : $scope.tabsets});
 		}
+	}
+
+	$scope.openTabset = function(tabset) {
+		for (var i=0; i< tabset.tabs.length; i++) {
+			chrome.tabs.create({
+				url : tabset.tabs[i].url,
+				active : false
+			});
+		}
+		window.close();
+	}
 });

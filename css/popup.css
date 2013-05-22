@@ -30,3 +30,6 @@ a {
 ul {
   margin:0;
 }
+td button {
+	float:right;
+}
