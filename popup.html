@@ -1,5 +1,5 @@
 <!doctype HTML>
-<html ng-app="Tabsets">
+<html ng-app="Tabsets" ng-csp>
 <head>
   <link rel="stylesheet" href="css/popup.css"></style>
 
@@ -9,11 +9,9 @@
 </head>
 <body>
 <div ng-controller="TabsetsController">
-<h1>{{message}}</h1>
-
   <label for="newTabsetName">Create a new tab set</label>
-  <input id="newTabsetName" type="text" />
-  <button>Create</button>
+  <input id="newTabsetName" type="text" ng-model="newTabsetName" />
+  <button ng-click="newTabset()">Create</button>
   <hr/>
   
   <table>

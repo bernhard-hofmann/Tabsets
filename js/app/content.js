@@ -1,4 +1,4 @@
-/*chrome.extension.onMessage.addListener(function(request, sender, sendMessage) {
+chrome.extension.onMessage.addListener(function(request, sender, sendMessage) {
 	debugger;
 	
 	if (request.action == "PageInfo") {
@@ -15,7 +15,6 @@
 		sendResponse(pageInfos);
 	}
 });
-*/
 /*
 chrome.browserAction.setBadgeText({text: "0"});
 console.log("Loaded.");
