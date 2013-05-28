@@ -21,7 +21,7 @@ myApp.controller('TabsetsController', function($scope) {
 	});
 
 	$scope.toggle = function(tabset) {
-		tabset.isExpended = !tabset.isExpended;
+		tabset.isExpanded = !tabset.isExpanded;
 	}
 
 	function storeTabsets(tabsets) {

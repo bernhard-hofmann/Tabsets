@@ -9,8 +9,9 @@ body, button {
 	font-size:.7rem;
 }
 table {
-	border:1px solid silver;
-	width:100%
+	width:100%;
+	border-radius: 3px;
+	margin-top: .5em;
 }
 h1 {
 	font-size:large;
@@ -19,13 +20,16 @@ thead td {
 	background-color:silver;
 	text-align:left;
 	font-weight:bold;
+	vertical-align: middle;
+	padding: .3rem;
 }
 td {
-	vertical-align:top;
+	vertical-align:middle;
+	border-bottom:1px solid silver;
 }
 td:nth-child(2) {
 	text-align:right;
-	width:8rem;
+	width:5rem;
 }
 a {
 	text-decoration:none;
@@ -37,15 +41,24 @@ td button {
 	float:right;
 }
 #newTabsetName {width:200px;}
-table {
-	border-radius: 3px;
-	margin-top: .5em;
+button {
+	font-weight:bold;
+	border-radius:.6rem;
+	color:#111;
 }
-thead td {
-	vertical-align: middle;
-	padding: .3rem;
+.delete {
+	color:yellow;
+	background-color:red;
 }
-td:nth-child(2) {
-	text-align: right;
-	width: 5rem;
+.defaultAction {
+	background-color:limegreen;
+	padding:.1rem .6rem;
+}
+.open {
+	background-color:skyblue;
+	padding:.1rem .6rem;
+}
+span {
+	max-width: 195px;
+	display: inline-block;
 }

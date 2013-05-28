@@ -13,7 +13,7 @@
 	<form name="newTabsetForm">
 		<label for="newTabsetName">Create a new tabset</label>
 		<input id="newTabsetName" type="text" ng-model="newTabsetName" required />
-		<button ng-click="newTabset()" ng-disabled="newTabsetForm.$invalid">Create</button>
+		<button ng-click="newTabset()" ng-disabled="newTabsetForm.$invalid" class="defaultAction">Create</button>
 	</form>
 
 	<table>
@@ -27,8 +27,8 @@
 			<tr ng-repeat="tabset in tabsets">
 				<td>
 					<span ng-click="toggle(tabset)">{{tabset.name}} ({{tabset.tabs.length}})</span>
-					<button ng-click="openTabset(tabset)">Open</button>
-					<button ng-click="delTabset(tabset)">Delete</button>
+					<button ng-click="delTabset(tabset)" title="Delete" class="delete">x</button>
+					<button ng-click="openTabset(tabset)" class="open">Open</button>
 					<ul ng-repeat="tab in tabset.tabs" ng-show="tabset.isExpanded">
 						<li><a target="_blank" href="{{tab.url}}">{{tab.title}} {{tabset.isExpanded}}</li>
 					</ul>
