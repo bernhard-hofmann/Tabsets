@@ -70,7 +70,7 @@ myApp.controller('TabsetsController', function($scope) {
 	}
 
 	$scope.delTabset = function(tabset) {
-		if (window.confirm("Are you sure you want to remove '"+ tabset.name +"' permanently?")) {
+		if (window.confirm("Are you sure you want to remove the '"+ tabset.name +"' tabset permanently?")) {
 			var ix = -1;
 			for (i=0;i<$scope.tabsets.length;i++) {
 				if ($scope.tabsets[i].name === tabset.name) {
