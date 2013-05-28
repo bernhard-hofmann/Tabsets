@@ -9,14 +9,13 @@
 </head>
 <body>
 <div ng-controller="TabsetsController">
+	<h1>Tabsets</h1>
 	<form name="newTabsetForm">
-		<label for="newTabsetName">Create a new tab set</label>
+		<label for="newTabsetName">Create a new tabset</label>
 		<input id="newTabsetName" type="text" ng-model="newTabsetName" required />
 		<button ng-click="newTabset()" ng-disabled="newTabsetForm.$invalid">Create</button>
 	</form>
 
-	<hr/>
-  
 	<table>
 		<thead>
 			<tr>

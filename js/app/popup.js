@@ -10,13 +10,30 @@ _gaq.push(['_trackPageview']);
 
 myApp.controller('TabsetsController', function($scope) {
 	chrome.storage.sync.get(null, function(blob) {
-		console.log(blob);
-		$scope.tabsets = blob.tabsets || [];
-		$scope.$apply();
+		$scope.tabsets = [];
+
+		if (blob.count > 0) {
+			for (var i=0; i<blob.count; i++) {
+				$scope.tabsets.push(blob['tabset_'+i]);
+			}
+			$scope.$apply();
+		}
 	});
 
 	$scope.toggle = function(tabset) {
 		tabset.isExpended = !tabset.isExpended;
+	}
+
+	function storeTabsets(tabsets) {
+		chrome.storage.sync.clear();
+		chrome.storage.sync.set({'count':tabsets.length});
+		for (i=0; i<tabsets.length; i++) {
+			var key = 'tabset_'+i;
+			var val = tabsets[i];
+			var obj = {};
+			obj[key] = val;
+			chrome.storage.sync.set(obj);
+		}
 	}
 
 	$scope.newTabset = function() {
@@ -47,7 +64,7 @@ myApp.controller('TabsetsController', function($scope) {
 			$scope.newTabsetName = '';
 			$scope.$apply();
 
-			chrome.storage.sync.set({'tabsets' : $scope.tabsets});
+			storeTabsets($scope.tabsets);
 			//window.close();
 		});
 	}
@@ -63,7 +80,7 @@ myApp.controller('TabsetsController', function($scope) {
 			}
 			$scope.tabsets.splice(ix,1);
 			$scope.$apply();
-			chrome.storage.sync.set({'tabsets' : $scope.tabsets});
+			storeTabsets($scope.tabsets);
 		}
 	}
 
