@@ -11,6 +11,10 @@ _gaq.push(['_trackPageview']);
 myApp.controller('TabsetsController', function($scope) {
 	'use strict';
 
+	var manifest = chrome.runtime.getManifest();
+	$scope.name = manifest.name;
+	$scope.version = manifest.version;
+
 	chrome.storage.sync.get(null, function(blob) {
 		$scope.tabsets = [];
 
