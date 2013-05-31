@@ -10,6 +10,9 @@ The full source code is available and open sourced on GitHub.
 See http://bernhard-hofmann.github.io/Tabsets/
 
 ## Version History
+Version 1.6:
+* If the only open tab is a new tab, it'll be closed when you open a tabset. This makes opening a new window, and then a tabset feel more dedicated to the tabset.
+
 Version 1.5:
 * Make it clearer that the tabsets can be clicked to expand the tabs in them, which allows individual tabs to be opened.
 

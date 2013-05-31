@@ -95,15 +95,21 @@ myApp.controller('TabsetsController', function($scope) {
 	};
 
 	$scope.openTabset = function(tabset) {
-		for (var i=0; i< tabset.tabs.length; i++) {
-			chrome.tabs.create({
-				url : tabset.tabs[i].url,
-				active : false
-			});
-		}
+		chrome.tabs.query({currentWindow:true}, function(tabs) {
+			for (var i=0; i< tabset.tabs.length; i++) {
+				chrome.tabs.create({
+					url : tabset.tabs[i].url,
+					active : false
+				});
+			}
 
-		var _gaq = _gaq || [];
-		_gaq.push(['_trackEvent', 'Tabset', 'Opened']);
-		window.close();
+			if (tabs.length === 1 && tabs[0].title === "New Tab" && tabs[0].url === "chrome://newtab/") {
+				chrome.tabs.remove(tabs[0].id);
+			}
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_trackEvent', 'Tabset', 'Opened']);
+			window.close();
+		});
 	};
 });
