@@ -26,11 +26,11 @@
 		<tbody>
 			<tr ng-repeat="tabset in tabsets">
 				<td>
-					<span ng-click="toggle(tabset)">{{tabset.name}} ({{tabset.tabs.length}})</span>
+					<span ng-click="toggle(tabset)" class="tabsetTitle">{{tabset.name}} ({{tabset.tabs.length}})</span>
 					<button ng-click="delTabset(tabset)" title="Delete" class="delete">x</button>
 					<button ng-click="openTabset(tabset)" class="open">Open</button>
 					<ul ng-repeat="tab in tabset.tabs" ng-show="tabset.isExpanded">
-						<li><a target="_blank" href="{{tab.url}}">{{tab.title}} {{tabset.isExpanded}}</li>
+						<li><a target="_blank" href="{{tab.url}}">{{tab.title}}</li>
 					</ul>
 				</td>
 				<td>{{tabset.created}}</td>

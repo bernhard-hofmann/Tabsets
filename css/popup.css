@@ -58,7 +58,8 @@ button {
 	background-color:skyblue;
 	padding:.1rem .6rem;
 }
-span {
-	max-width: 195px;
-	display: inline-block;
+.tabsetTitle {
+	max-width:195px;
+	display:inline-block;
+	cursor:pointer;
 }
