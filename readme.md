@@ -10,6 +10,9 @@ The full source code is available and open sourced on GitHub.
 See http://bernhard-hofmann.github.io/Tabsets/
 
 ## Version History
+Version 1.5:
+* Make it clearer that the tabsets can be clicked to expand the tabs in them, which allows individual tabs to be opened.
+
 Version 1.4:
 * Version shown in the heading
 
