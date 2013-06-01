@@ -69,7 +69,6 @@ myApp.controller('TabsetsController', function($scope) {
 			$scope.$apply();
 
 			storeTabsets($scope.tabsets);
-			var _gaq = _gaq || [];
 			_gaq.push(['_trackEvent', 'Tabset', 'Created']);
 
 			//window.close();
@@ -89,7 +88,6 @@ myApp.controller('TabsetsController', function($scope) {
 			$scope.$apply();
 			storeTabsets($scope.tabsets);
 
-			var _gaq = _gaq || [];
 			_gaq.push(['_trackEvent', 'Tabset', 'Deleted']);
 		}
 	};
@@ -107,7 +105,6 @@ myApp.controller('TabsetsController', function($scope) {
 				chrome.tabs.remove(tabs[0].id);
 			}
 
-			var _gaq = _gaq || [];
 			_gaq.push(['_trackEvent', 'Tabset', 'Opened']);
 			window.close();
 		});
