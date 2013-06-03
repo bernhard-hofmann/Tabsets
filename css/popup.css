@@ -37,29 +37,28 @@ a {
 ul {
 	margin:0;
 }
-td button {
-	float:right;
-}
 #newTabsetName {width:200px;}
 button {
 	font-weight:bold;
-	border-radius:.6rem;
-	color:#111;
 }
 .delete {
-	color:yellow;
-	background-color:red;
-}
-.defaultAction {
-	background-color:limegreen;
-	padding:.1rem .6rem;
-}
-.open {
-	background-color:skyblue;
-	padding:.1rem .6rem;
+	display:inline-block;
+	float:right;
+	width:16px;
+	height:12px;
+	background: url(images/delete.gif) no-repeat;
 }
 .tabsetTitle {
 	max-width:195px;
 	display:inline-block;
 	cursor:pointer;
+}
+.tabsetExpando {
+	width:16px;
+	height:12px;
+	display:inline-block;
+	background: url(images/plus.gif) no-repeat;
+}
+.expanded {
+	background: url(images/minus.gif) no-repeat;
 }

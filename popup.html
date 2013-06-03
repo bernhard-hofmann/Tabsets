@@ -26,9 +26,9 @@
 		<tbody>
 			<tr ng-repeat="tabset in tabsets">
 				<td>
-					<span ng-click="toggle(tabset)" class="tabsetTitle">{{tabset.name}} ({{tabset.tabs.length}})</span>
-					<button ng-click="delTabset(tabset)" title="Delete" class="delete">x</button>
-					<button ng-click="openTabset(tabset)" class="open">Open</button>
+					<span ng-click="toggle(tabset)" class="tabsetExpando" ng-class="{expanded:tabset.isExpanded}" title="Show/Hide the tabs in this tabset"></span>
+					<a class="tabsetTitle" ng-click="openTabset(tabset)" href="#" title="Open all the tabs in this tabset">{{tabset.name}} ({{tabset.tabs.length}})</a>
+					<span ng-click="delTabset(tabset)" title="Delete this tabset" class="delete"></span>
 					<ul ng-repeat="tab in tabset.tabs" ng-show="tabset.isExpanded">
 						<li><a target="_blank" href="{{tab.url}}">{{tab.title}}</li>
 					</ul>
