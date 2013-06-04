@@ -34,6 +34,9 @@ td:nth-child(2) {
 a {
 	text-decoration:none;
 }
+a:hover {
+	text-decoration: underline;
+}
 ul {
 	margin:0;
 }
@@ -42,11 +45,22 @@ button {
 	font-weight:bold;
 }
 .delete {
-	display:inline-block;
 	float:right;
 	width:16px;
 	height:12px;
 	background: url(images/delete.gif) no-repeat;
+}
+.export {
+	float:right;
+	width:16px;
+	height:12px;
+	background: url(images/export.gif) no-repeat;
+}
+.import {
+	float:right;
+	width:16px;
+	height:12px;
+	background: url(images/import.gif) no-repeat;
 }
 .tabsetTitle {
 	max-width:195px;
@@ -61,4 +75,10 @@ button {
 }
 .expanded {
 	background: url(images/minus.gif) no-repeat;
+}
+#exportedTabsetText, #importedTabsetText {
+	width:100%;
+	height:4rem;
+	-webkit-user-select:all;
+	user-select:all;
 }

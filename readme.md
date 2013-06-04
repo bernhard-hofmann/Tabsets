@@ -10,6 +10,9 @@ The full source code is available and open sourced on GitHub.
 See http://bernhard-hofmann.github.io/Tabsets/
 
 ## Version History
+Version 1.9:
+* Basic support added for exporting and importing tabsets via their JSON representation. Being text, it can be copied and pasted in many places where a file might not be suitable.
+
 Version 1.8:
 * UI changes to make it more obvious that a tabset can be expanded, and made the name of the tabset the link to open all the tabs in that tabset. Also made delete an image so it's more compact/neater.
 

@@ -3,9 +3,9 @@ _gaq.push(['_setAccount', 'UA-5243256-6']);
 _gaq.push(['_trackPageview']);
 
 (function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = 'https://ssl.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = 'https://ssl.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 
 myApp.controller('TabsetsController', function($scope) {
@@ -14,6 +14,9 @@ myApp.controller('TabsetsController', function($scope) {
 	var manifest = chrome.runtime.getManifest();
 	$scope.name = manifest.name;
 	$scope.version = manifest.version;
+
+	$scope.importing = false;
+	$scope.importedTabset = '';
 
 	chrome.storage.sync.get(null, function(blob) {
 		$scope.tabsets = [];
@@ -79,7 +82,7 @@ myApp.controller('TabsetsController', function($scope) {
 		if (window.confirm("Are you sure you want to remove the '"+ tabset.name +"' tabset permanently?")) {
 			var ix = -1;
 			for (var i=0; i<$scope.tabsets.length; i++) {
-				if ($scope.tabsets[i].name === tabset.name) {
+				if ($scope.tabsets[i].$$hashKey === tabset.$$hashKey) {
 					ix = i;
 					break;
 				}
@@ -89,6 +92,47 @@ myApp.controller('TabsetsController', function($scope) {
 			storeTabsets($scope.tabsets);
 
 			_gaq.push(['_trackEvent', 'Tabset', 'Deleted']);
+		}
+	};
+
+	$scope.exportTabset = function(tabset) {
+		// Make a deep copy of the tabset
+		var temp = JSON.parse(JSON.stringify(tabset));
+
+		// Strip Angular properties
+		delete temp.$$hashKey;
+		for (var i = temp.tabs.length - 1; i >= 0; i--) {
+			delete temp.tabs[i].$$hashKey;
+		}
+
+		$scope.exportedTabset = JSON.stringify(temp);
+		_gaq.push(['_trackEvent', 'Tabset', 'Exported']);
+	};
+
+	$scope.exportDone = function(tabset) {
+		delete $scope.exportedTabset;
+	};
+
+	$scope.importTabset = function() {
+		$scope.importing = true;
+	};
+
+	$scope.importDone = function(tabset) {
+		try {
+			var importedTabset = JSON.parse($scope.importedTabset);
+			if (!importedTabset.hasOwnProperty('name') || !importedTabset.hasOwnProperty('tabs') || !importedTabset.hasOwnProperty('created')
+				|| !Array.isArray(importedTabset.tabs)) {
+				throw 'Invalid object';
+			}
+
+			$scope.tabsets.push(importedTabset);
+			storeTabsets($scope.tabsets);
+
+			$scope.importedTabset = '';
+			$scope.importing = false;
+			_gaq.push(['_trackEvent', 'Tabset', 'Imported']);
+		} catch (e) {
+			alert("Sorry, that tabset text doesn\'t appear to be correctly formatted.");
 		}
 	};
 
