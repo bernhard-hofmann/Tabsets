@@ -71,10 +71,10 @@ button {
 	width:16px;
 	height:12px;
 	display:inline-block;
-	background: url(images/plus.gif) no-repeat;
+	background: url(images/expandable.gif) no-repeat;
 }
 .expanded {
-	background: url(images/minus.gif) no-repeat;
+	background: url(images/expanded.gif) no-repeat;
 }
 #exportedTabsetText, #importedTabsetText {
 	width:100%;

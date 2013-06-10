@@ -10,6 +10,9 @@ The full source code is available and open sourced on GitHub.
 See http://bernhard-hofmann.github.io/Tabsets/
 
 ## Version History
+Version 1.10:
+* Expand icon changed in preparation for using the plus icon to add a tab to a tabset.
+
 Version 1.9:
 * Basic support added for exporting and importing tabsets via their JSON representation. Being text, it can be copied and pasted in many places where a file might not be suitable.
 
