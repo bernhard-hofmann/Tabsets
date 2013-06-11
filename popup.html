@@ -31,11 +31,14 @@
 				<td>
 					<span ng-click="toggle(tabset)" class="tabsetExpando" ng-class="{expanded:tabset.isExpanded}" title="Show/Hide the tabs in this tabset"></span>
 					<a class="tabsetTitle" ng-click="openTabset(tabset)" href="#" title="Open all the tabs in this tabset">{{tabset.name}} ({{tabset.tabs.length}})</a>
-					<span ng-click="delTabset(tabset)" title="Delete this tabset" class="delete"></span>
-					<span ng-click="exportTabset(tabset)" title="Export this tabset" class="export"></span>
-					<span ng-click="addCurrentTabToTabset(tabset)" title="Add the current tab to this tabset" class="addTab"></span>
+					<span ng-click="delTabset(tabset)" title="Delete this tabset" class="delete rhsImgBtn"></span>
+					<span ng-click="exportTabset(tabset)" title="Export this tabset" class="export rhsImgBtn"></span>
+					<span ng-click="addCurrentTabToTabset(tabset)" title="Add the current tab to this tabset" class="addTab rhsImgBtn"></span>
 					<ul ng-repeat="tab in tabset.tabs" ng-show="tabset.isExpanded">
-						<li><a target="_blank" href="{{tab.url}}" title="{{tab.url}}">{{tab.title}}</li>
+						<li>
+							<a target="_blank" href="{{tab.url}}" title="{{tab.url}}">{{tab.title}}</a>
+							<span ng-click="removeTabFromTabset(tab, tabset)" title="Remove this tab from this tabset" class="removeTab rhsImgBtn"></span>
+						</li>
 					</ul>
 				</td>
 				<td>{{tabset.created}}</td>

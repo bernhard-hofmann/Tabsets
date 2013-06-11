@@ -179,10 +179,24 @@ myApp.controller('TabsetsController', function($scope) {
 
 				$scope.$apply();
 				storeTabsets($scope.tabsets);
-				_gaq.push(['_trackEvent', 'Tabset', 'Appended']);
+				_gaq.push(['_trackEvent', 'Tabset', 'TabAdded']);
 			} else {
 				alert('Oops, I could not find an active tab. Please try again.');
 			}
 		});
+	};
+
+	$scope.removeTabFromTabset = function(tab, tabset) {
+		var spliceIndex;
+		for (var t=0; t<tabset.tabs.length; t++) {
+			if (tabset.tabs[t].url === tab.url) {
+				spliceIndex = t;
+				break;
+			}
+		}
+		tabset.tabs.splice(spliceIndex, 1);
+
+		storeTabsets($scope.tabsets);
+		_gaq.push(['_trackEvent', 'Tabset', 'TabRemoved']);
 	};
 });

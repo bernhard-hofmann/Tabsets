@@ -44,28 +44,24 @@ ul {
 button {
 	font-weight:bold;
 }
-.delete {
-	float:right;
-	width:16px;
-	height:12px;
-	background: url(images/delete.gif) no-repeat;
-}
-.export {
-	float:right;
-	width:16px;
-	height:12px;
-	background: url(images/export.gif) no-repeat;
-}
-.addTab {
+.rhsImgBtn {
     float:right;
     width:16px;
     height:12px;
+}
+.delete {
+	background: url(images/delete.gif) no-repeat;
+}
+.export {
+	background: url(images/export.gif) no-repeat;
+}
+.addTab {
     background: url(images/plus.gif) no-repeat;
 }
+.removeTab {
+    background: url(images/delete.gif) no-repeat;
+}
 .import {
-	float:right;
-	width:16px;
-	height:12px;
 	background: url(images/import.gif) no-repeat;
 }
 .tabsetTitle {

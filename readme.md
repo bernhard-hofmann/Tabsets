@@ -10,6 +10,9 @@ The full source code is available and open sourced on GitHub.
 See http://bernhard-hofmann.github.io/Tabsets/
 
 ## Version History
+Version 1.12:
+* You can now remove individual tabs from a tabset with the delete button beside each tab.
+
 Version 1.11:
 * You can now add the current tab to an existing tabset with the plus button beside a tabset.
 
