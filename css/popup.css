@@ -56,6 +56,12 @@ button {
 	height:12px;
 	background: url(images/export.gif) no-repeat;
 }
+.addTab {
+    float:right;
+    width:16px;
+    height:12px;
+    background: url(images/plus.gif) no-repeat;
+}
 .import {
 	float:right;
 	width:16px;

@@ -35,9 +35,16 @@ myApp.controller('TabsetsController', function($scope) {
 
 	function storeTabsets(tabsets) {
 		var obj = {'count':tabsets.length};
+        var tabset;
 		chrome.storage.sync.clear();
 		for (var i=0; i<tabsets.length; i++) {
-			obj['tabset_'+i] = tabsets[i];
+            tabset = JSON.parse(JSON.stringify(tabsets[i]));
+            delete tabset.isExpanded;
+            delete tabset.$$hashKey;
+            for (var t=0; t<tabset.tabs.length; t++){
+                delete tabset.tabs[t].$$hashKey;
+            }
+			obj['tabset_'+i] = tabset;
 		}
 		chrome.storage.sync.set(obj);
 	}
@@ -151,6 +158,31 @@ myApp.controller('TabsetsController', function($scope) {
 
 			_gaq.push(['_trackEvent', 'Tabset', 'Opened']);
 			window.close();
+		});
+	};
+
+	$scope.addCurrentTabToTabset = function(tabset) {
+		chrome.tabs.query({currentWindow:true}, function(tabs) {
+			var activeTab;
+			for (var t=0; t<tabs.length; t++){
+				if (tabs[t].active) {
+					activeTab = tabs[t];
+					break;
+				}
+			}
+
+			if (activeTab) {
+				tabset.tabs.push({
+					title:activeTab.title,
+					url:activeTab.url
+				});
+
+				$scope.$apply();
+				storeTabsets($scope.tabsets);
+				_gaq.push(['_trackEvent', 'Tabset', 'Appended']);
+			} else {
+				alert('Oops, I could not find an active tab. Please try again.');
+			}
 		});
 	};
 });

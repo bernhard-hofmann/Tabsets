@@ -10,6 +10,9 @@ The full source code is available and open sourced on GitHub.
 See http://bernhard-hofmann.github.io/Tabsets/
 
 ## Version History
+Version 1.11:
+* You can now add the current tab to an existing tabset with the plus button beside a tabset.
+
 Version 1.10:
 * Expand icon changed in preparation for using the plus icon to add a tab to a tabset.
 

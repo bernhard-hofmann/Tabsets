@@ -33,6 +33,7 @@
 					<a class="tabsetTitle" ng-click="openTabset(tabset)" href="#" title="Open all the tabs in this tabset">{{tabset.name}} ({{tabset.tabs.length}})</a>
 					<span ng-click="delTabset(tabset)" title="Delete this tabset" class="delete"></span>
 					<span ng-click="exportTabset(tabset)" title="Export this tabset" class="export"></span>
+					<span ng-click="addCurrentTabToTabset(tabset)" title="Add the current tab to this tabset" class="addTab"></span>
 					<ul ng-repeat="tab in tabset.tabs" ng-show="tabset.isExpanded">
 						<li><a target="_blank" href="{{tab.url}}" title="{{tab.url}}">{{tab.title}}</li>
 					</ul>
