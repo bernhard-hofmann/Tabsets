@@ -102,6 +102,20 @@ myApp.controller('TabsetsController', function($scope) {
 		}
 	};
 
+	$scope.renTabset = function(tabset) {
+		var result = window.prompt("Enter the new name for the tabset '"+ tabset.name +"'");
+		if (result !== null) {
+			if (result.length < 1) {
+				alert('You cannot give a tabset a blank name.');
+				return;
+			}
+
+			tabset.name = result;
+			storeTabsets($scope.tabsets);
+			_gaq.push(['_trackEvent', 'Tabset', 'Renamed']);
+		}
+	};
+
 	$scope.exportTabset = function(tabset) {
 		// Make a deep copy of the tabset
 		var temp = JSON.parse(JSON.stringify(tabset));

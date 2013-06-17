@@ -64,6 +64,9 @@ button {
 .import {
 	background: url(images/import.gif) no-repeat;
 }
+.renTab {
+	background: url(images/pen.gif) no-repeat;
+}
 .tabsetTitle {
 	max-width:195px;
 	display:inline-block;

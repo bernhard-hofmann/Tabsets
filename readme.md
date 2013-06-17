@@ -6,10 +6,12 @@ A simple list shows when each set of tabs (a "tabset") was created, and how many
 
 Permissions required are so that the title of each tab can be retrieved. This extension does not, and will not, read the contents of your web pages.
 
-The full source code is available and open sourced on GitHub.
-See http://bernhard-hofmann.github.io/Tabsets/
+The extension is available in the Web Store at https://chrome.google.com/webstore/detail/tabsets/ifohmndbcefggppiblfofpbkmdfmeing
 
 ## Version History
+Version 1.13:
+* You can now rename tabsets.
+
 Version 1.12:
 * You can now remove individual tabs from a tabset with the delete button beside each tab.
 
