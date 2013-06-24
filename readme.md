@@ -2,13 +2,16 @@
 
 This extension lets you keep all the tabs you have open in a set so that you can open them all again later, even on another device, if you have synchronisation enabled in Google Chrome.
 
-A simple list shows when each set of tabs (a "tabset") was created, and how many tabs there are in each set.
+A tree list shows when each set of tabs (a "tabset") was created, and how many tabs there are in each set. Each tabset can be expended to see the individual tabs in that tabset, allowing one at a time to be removed. You can also rename the tabset, add the current tab to a tabset, and import or export tabsets as plain text to share with others.
 
 Permissions required are so that the title of each tab can be retrieved. This extension does not, and will not, read the contents of your web pages.
 
 The extension is available in the Web Store at https://chrome.google.com/webstore/detail/tabsets/ifohmndbcefggppiblfofpbkmdfmeing
 
 ## Version History
+Version 1.14:
+* The rename tabset prompt defaults to the current tabset name.
+
 Version 1.13:
 * You can now rename tabsets.
 
