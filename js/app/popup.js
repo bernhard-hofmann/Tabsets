@@ -103,7 +103,7 @@ myApp.controller('TabsetsController', function($scope) {
 	};
 
 	$scope.renTabset = function(tabset) {
-		var result = window.prompt("Enter the new name for the tabset '"+ tabset.name +"'");
+		var result = window.prompt("Enter the new name for the tabset '"+ tabset.name +"'", tabset.name);
 		if (result !== null) {
 			if (result.length < 1) {
 				alert('You cannot give a tabset a blank name.');
