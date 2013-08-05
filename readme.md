@@ -9,6 +9,12 @@ Permissions required are so that the title of each tab can be retrieved. This ex
 The extension is available in the Web Store at https://chrome.google.com/webstore/detail/tabsets/ifohmndbcefggppiblfofpbkmdfmeing
 
 ## Version History
+Version 1.16:
+* Improved layout of delete buttons for tabs within tabsets.
+
+Version 1.15:
+* Fixed the missing tabset import button.
+
 Version 1.14:
 * The rename tabset prompt defaults to the current tabset name.
 
