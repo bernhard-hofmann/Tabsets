@@ -40,6 +40,9 @@ a:hover {
 ul {
 	margin:0;
 }
+li {
+	border-bottom:1px dotted #333;
+}
 #newTabsetName {width:200px;}
 button {
 	font-weight:bold;

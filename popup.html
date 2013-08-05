@@ -35,10 +35,10 @@
 					<span ng-click="exportTabset(tabset)" title="Export this tabset" class="export rhsImgBtn"></span>
 					<span ng-click="addCurrentTabToTabset(tabset)" title="Add the current tab to this tabset" class="addTab rhsImgBtn"></span>
 					<span ng-click="renTabset(tabset)" title="Rename this tabset" class="renTab rhsImgBtn"></span>
-					<ul ng-repeat="tab in tabset.tabs" ng-show="tabset.isExpanded">
-						<li>
-							<a target="_blank" href="{{tab.url}}" title="{{tab.url}}">{{tab.title}}</a>
+					<ul>
+						<li ng-repeat="tab in tabset.tabs" ng-show="tabset.isExpanded">
 							<span ng-click="removeTabFromTabset(tab, tabset)" title="Remove this tab from this tabset" class="removeTab rhsImgBtn"></span>
+							<a target="_blank" href="{{tab.url}}" title="{{tab.url}}">{{tab.title}}</a>
 						</li>
 					</ul>
 				</td>
