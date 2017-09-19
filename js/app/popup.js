@@ -36,7 +36,7 @@ myApp.controller('TabsetsController', function($scope) {
 	function storeTabsets(tabsets) {
 		var obj = {'count':tabsets.length};
 		var tabset;
-		chrome.storage.sync.clear();
+
 		for (var i=0; i<tabsets.length; i++) {
 			tabset = JSON.parse(JSON.stringify(tabsets[i]));
 			delete tabset.isExpanded;
