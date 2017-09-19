@@ -35,18 +35,25 @@ myApp.controller('TabsetsController', function($scope) {
 
 	function storeTabsets(tabsets) {
 		var obj = {'count':tabsets.length};
-        var tabset;
+		var tabset;
 		chrome.storage.sync.clear();
 		for (var i=0; i<tabsets.length; i++) {
-            tabset = JSON.parse(JSON.stringify(tabsets[i]));
-            delete tabset.isExpanded;
-            delete tabset.$$hashKey;
-            for (var t=0; t<tabset.tabs.length; t++){
-                delete tabset.tabs[t].$$hashKey;
-            }
+			tabset = JSON.parse(JSON.stringify(tabsets[i]));
+			delete tabset.isExpanded;
+			delete tabset.$$hashKey;
+			for (var t=0; t<tabset.tabs.length; t++){
+				delete tabset.tabs[t].$$hashKey;
+			}
 			obj['tabset_'+i] = tabset;
 		}
-		chrome.storage.sync.set(obj);
+
+		chrome.storage.sync.set(obj, function() {
+			var error = chrome.runtime.lastError;
+			if (error) {
+				_gaq.push(['_trackEvent', 'Tabset', 'Error', error.message]);
+				window.alert(error.message);
+			}
+		});
 	}
 
 	$scope.newTabset = function() {
@@ -80,8 +87,6 @@ myApp.controller('TabsetsController', function($scope) {
 
 			storeTabsets($scope.tabsets);
 			_gaq.push(['_trackEvent', 'Tabset', 'Created']);
-
-			//window.close();
 		});
 	};
 
