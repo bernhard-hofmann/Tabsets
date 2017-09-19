@@ -59,10 +59,16 @@ button {
 	background: url(images/export.gif) no-repeat;
 }
 .addTab {
-    background: url(images/plus.gif) no-repeat;
+	background: url(images/plus.gif) no-repeat;
 }
 .removeTab {
-    background: url(images/delete.gif) no-repeat;
+	background: url(images/delete.gif) no-repeat;
+}
+.moveTabUp {
+	background: url(images/up.gif) no-repeat;
+}
+.moveTabDn {
+	background: url(images/down.gif) no-repeat;
 }
 .import {
 	background: url(images/import.gif) no-repeat;

@@ -205,6 +205,46 @@ myApp.controller('TabsetsController', function($scope) {
 		});
 	};
 
+	$scope.moveTabUp = function(tab, tabset) {
+		var spliceIndex;
+		for (var t=0; t<tabset.tabs.length; t++) {
+			if (tabset.tabs[t].url === tab.url) {
+				spliceIndex = t;
+				break;
+			}
+		}
+
+		if (spliceIndex === 0) {
+			window.alert("This tab is already at the top of the list.");
+		} else {
+			var tab = tabset.tabs[spliceIndex];
+			tabset.tabs.splice(spliceIndex, 1);
+			tabset.tabs.splice(spliceIndex-1, 0, tab);
+			storeTabsets($scope.tabsets);
+			_gaq.push(['_trackEvent', 'Tabset', 'TabMoved']);
+		}
+	};
+
+	$scope.moveTabDn = function(tab, tabset) {
+		var spliceIndex;
+		for (var t=0; t<tabset.tabs.length; t++) {
+			if (tabset.tabs[t].url === tab.url) {
+				spliceIndex = t;
+				break;
+			}
+		}
+
+		if (spliceIndex >= tabset.tabs.length-1) {
+			window.alert("This tab is already at the bottom of the list.");
+		} else {
+			var tab = tabset.tabs[spliceIndex];
+			tabset.tabs.splice(spliceIndex, 1);
+			tabset.tabs.splice(spliceIndex+1, 0, tab);
+			storeTabsets($scope.tabsets);
+			_gaq.push(['_trackEvent', 'Tabset', 'TabMoved']);
+		}
+	};
+
 	$scope.removeTabFromTabset = function(tab, tabset) {
 		var spliceIndex;
 		for (var t=0; t<tabset.tabs.length; t++) {

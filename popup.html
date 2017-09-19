@@ -38,6 +38,8 @@
 					<ul>
 						<li ng-repeat="tab in tabset.tabs" ng-show="tabset.isExpanded">
 							<span ng-click="removeTabFromTabset(tab, tabset)" title="Remove this tab from this tabset" class="removeTab rhsImgBtn"></span>
+							<span ng-click="moveTabUp(tab, tabset)" title="Move this tab up"   class="moveTabUp rhsImgBtn"></span>
+							<span ng-click="moveTabDn(tab, tabset)" title="Move this tab down" class="moveTabDn rhsImgBtn"></span>
 							<a target="_blank" href="{{tab.url}}" title="{{tab.url}}">{{tab.title}}</a>
 						</li>
 					</ul>
