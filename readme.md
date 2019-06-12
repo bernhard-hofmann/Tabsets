@@ -9,6 +9,15 @@ Permissions required are so that the title of each tab can be retrieved. This ex
 The extension is available in the Web Store at https://chrome.google.com/webstore/detail/tabsets/ifohmndbcefggppiblfofpbkmdfmeing
 
 ## Version History
+Version 1.19:
+* Save tabsets with local date and time of creation.
+
+Version 1.18:
+* Closes #14 by allowing users to move individual tabs up and down within a tabset
+
+Version 1.17:
+* Prevent total data loss by not erasing the data before setting it.
+
 Version 1.16:
 * Improved layout of delete buttons for tabs within tabsets.
 
