@@ -62,7 +62,7 @@ myApp.controller('TabsetsController', function($scope) {
 			function pad(n) {
 				return n<10 ? '0'+n : n;
 			}
-			return d.getUTCFullYear()+'-'+ pad(d.getUTCMonth()+1)+'-'+ pad(d.getUTCDate())+' '+ pad(d.getUTCHours())+':'+ pad(d.getUTCMinutes());
+			return d.getFullYear()+'-'+ pad(d.getMonth()+1)+'-'+ pad(d.getDate())+' '+ pad(d.getHours())+':'+ pad(d.getMinutes());
 		}
 
 		chrome.tabs.query({currentWindow:true}, function(tabs) {
