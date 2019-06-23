@@ -9,6 +9,9 @@ Permissions required are so that the title of each tab can be retrieved. This ex
 The extension is available in the Web Store at https://chrome.google.com/webstore/detail/tabsets/ifohmndbcefggppiblfofpbkmdfmeing
 
 ## Version History
+Version 1.20:
+* Sort tabsets by name or creation time.
+
 Version 1.19:
 * Save tabsets with local date and time of creation.
 

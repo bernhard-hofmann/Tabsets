@@ -100,7 +100,11 @@ myApp.controller('TabsetsController', function($scope) {
 				}
 			}
 			$scope.tabsets.splice(ix,1);
-			$scope.$apply();
+			try {
+				$scope.$apply();
+			} catch (e) {
+				// Assume apply is already in progress
+			}
 			storeTabsets($scope.tabsets);
 
 			_gaq.push(['_trackEvent', 'Tabset', 'Deleted']);
@@ -254,6 +258,24 @@ myApp.controller('TabsetsController', function($scope) {
 			}
 		}
 		tabset.tabs.splice(spliceIndex, 1);
+
+		storeTabsets($scope.tabsets);
+		_gaq.push(['_trackEvent', 'Tabset', 'TabRemoved']);
+	};
+
+	$scope.sortByName = function() {
+		$scope.tabsets.sort(function(a,b) {
+			return a.name < b.name ? -1 : 1;
+		});
+
+		storeTabsets($scope.tabsets);
+		_gaq.push(['_trackEvent', 'Tabset', 'TabRemoved']);
+	};
+
+	$scope.sortByDate = function() {
+		$scope.tabsets.sort(function(a,b) {
+			return a.created < b.created ? -1 : 1;
+		});
 
 		storeTabsets($scope.tabsets);
 		_gaq.push(['_trackEvent', 'Tabset', 'TabRemoved']);
