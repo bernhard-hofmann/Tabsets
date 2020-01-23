@@ -1,65 +1,68 @@
-<!doctype HTML>
+<!DOCTYPE html>
 <html ng-app="Tabsets" ng-csp>
-<head>
-	<title>{{name}}</title>
-	<link rel="stylesheet" href="css/popup.css">
+	<head>
+		<title>{{name}}</title>
+		<link rel="stylesheet" href="css/popup.css" />
 
-	<script src="js/lib/angular.min.js"></script>
-	<script src="js/app/app.js"></script>
-	<script src="js/app/popup.js"></script>
-</head>
-<body>
-<div ng-controller="TabsetsController">
-	<span ng-click="importTabset()" title="Import a tabset" class="import rhsImgBtn"></span>
-	<h1>{{name}}</h1>
+		<script src="js/lib/angular.min.js"></script>
+		<script src="js/app/app.js"></script>
+		<script src="js/app/popup.js"></script>
+	</head>
+	<body>
+		<div ng-controller="TabsetsController">
+			<span ng-click="importTabset()" title="Import a tabset" class="import rhsImgBtn"></span>
+			<span>
+				<h1 style="display:inline-block;margin-block-start:0">{{name}}</h1>
+				<a href="#"><span style="margin-left:.5rem;cursor:pointer;" title="Show your thanks by buying the author a beer." ng-click="openUrl('https://monzo.me/bernhardhofmann')">Donate</span></a>
+			</span>
 
-	<form name="newTabsetForm">
-		<label for="newTabsetName">Create a new tabset</label>
-		<input id="newTabsetName" type="text" ng-model="newTabsetName" required />
-		<button ng-click="newTabset()" ng-disabled="newTabsetForm.$invalid" class="defaultAction">Create</button>
-	</form>
+			<form name="newTabsetForm">
+				<label for="newTabsetName">Create a new tabset</label>
+				<input id="newTabsetName" type="text" ng-model="newTabsetName" required />
+				<button ng-click="newTabset()" ng-disabled="newTabsetForm.$invalid" class="defaultAction">Create</button>
+			</form>
 
-	<table>
-		<thead>
-			<tr>
-				<td ng-click="sortByName()">Name</td>
-				<td ng-click="sortByDate()">Created</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="tabset in tabsets">
-				<td>
-					<span ng-click="toggle(tabset)" class="tabsetExpando" ng-class="{expanded:tabset.isExpanded}" title="Show/Hide the tabs in this tabset"></span>
-					<a class="tabsetTitle" ng-click="openTabset(tabset)" href="#" title="Open all the tabs in this tabset">{{tabset.name}} ({{tabset.tabs.length}})</a>
-					<span ng-click="delTabset(tabset)" title="Delete this tabset" class="delete rhsImgBtn"></span>
-					<span ng-click="exportTabset(tabset)" title="Export this tabset" class="export rhsImgBtn"></span>
-					<span ng-click="addCurrentTabToTabset(tabset)" title="Add the current tab to this tabset" class="addTab rhsImgBtn"></span>
-					<span ng-click="renTabset(tabset)" title="Rename this tabset" class="renTab rhsImgBtn"></span>
-					<ul>
-						<li ng-repeat="tab in tabset.tabs" ng-show="tabset.isExpanded">
-							<span ng-click="removeTabFromTabset(tab, tabset)" title="Remove this tab from this tabset" class="removeTab rhsImgBtn"></span>
-							<span ng-click="moveTabUp(tab, tabset)" title="Move this tab up"   class="moveTabUp rhsImgBtn"></span>
-							<span ng-click="moveTabDn(tab, tabset)" title="Move this tab down" class="moveTabDn rhsImgBtn"></span>
-							<a target="_blank" href="{{tab.url}}" title="{{tab.url}}">{{tab.title}}</a>
-						</li>
-					</ul>
-				</td>
-				<td>{{tabset.created}}</td>
-			</tr>
-		</tbody>
-	</table>
+			<table>
+				<thead>
+					<tr>
+						<td ng-click="sortByName()">Name</td>
+						<td ng-click="sortByDate()">Created</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="tabset in tabsets">
+						<td>
+							<span ng-click="toggle(tabset)" class="tabsetExpando" ng-class="{expanded:tabset.isExpanded}" title="Show/Hide the tabs in this tabset"></span>
+							<a class="tabsetTitle" ng-click="openTabset(tabset)" href="#" title="Open all the tabs in this tabset">{{tabset.name}} ({{tabset.tabs.length}})</a>
+							<span ng-click="delTabset(tabset)" title="Delete this tabset" class="delete rhsImgBtn"></span>
+							<span ng-click="exportTabset(tabset)" title="Export this tabset" class="export rhsImgBtn"></span>
+							<span ng-click="addCurrentTabToTabset(tabset)" title="Add the current tab to this tabset" class="addTab rhsImgBtn"></span>
+							<span ng-click="renTabset(tabset)" title="Rename this tabset" class="renTab rhsImgBtn"></span>
+							<ul>
+								<li ng-repeat="tab in tabset.tabs" ng-show="tabset.isExpanded">
+									<span ng-click="removeTabFromTabset(tab, tabset)" title="Remove this tab from this tabset" class="removeTab rhsImgBtn"></span>
+									<span ng-click="moveTabUp(tab, tabset)" title="Move this tab up" class="moveTabUp rhsImgBtn"></span>
+									<span ng-click="moveTabDn(tab, tabset)" title="Move this tab down" class="moveTabDn rhsImgBtn"></span>
+									<a target="_blank" href="{{tab.url}}" title="{{tab.url}}">{{tab.title}}</a>
+								</li>
+							</ul>
+						</td>
+						<td>{{tabset.created}}</td>
+					</tr>
+				</tbody>
+			</table>
 
-	<div ng-show="exportedTabset.length">
-		<p>Select all the text in the box below, copy it, and paste it wherever you want to share your tabset.</p>
-		<textarea id="exportedTabsetText" readonly="readonly" ng-model="exportedTabset"></textarea>
-		<button ng-click="exportDone()">Done</button>
-	</div>
+			<div ng-show="exportedTabset.length">
+				<p>Select all the text in the box below, copy it, and paste it wherever you want to share your tabset.</p>
+				<textarea id="exportedTabsetText" readonly="readonly" ng-model="exportedTabset"></textarea>
+				<button ng-click="exportDone()">Done</button>
+			</div>
 
-	<div ng-show="importing">
-		<p>Paste the tabset text in the box below then press the Import button.</p>
-		<textarea id="importedTabsetText" ng-model="importedTabset"></textarea>
-		<button ng-click="importDone()">Import</button>
-	</div>
-</div>
-</body>
+			<div ng-show="importing">
+				<p>Paste the tabset text in the box below then press the Import button.</p>
+				<textarea id="importedTabsetText" ng-model="importedTabset"></textarea>
+				<button ng-click="importDone()">Import</button>
+			</div>
+		</div>
+	</body>
 </html>

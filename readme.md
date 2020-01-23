@@ -9,60 +9,84 @@ Permissions required are so that the title of each tab can be retrieved. This ex
 The extension is available in the Web Store at https://chrome.google.com/webstore/detail/tabsets/ifohmndbcefggppiblfofpbkmdfmeing
 
 ## Version History
+
+Version 1.21:
+
+-  Added a link for donations.
+
 Version 1.20:
-* Sort tabsets by name or creation time.
+
+-  Sort tabsets by name or creation time.
 
 Version 1.19:
-* Save tabsets with local date and time of creation.
+
+-  Save tabsets with local date and time of creation.
 
 Version 1.18:
-* Closes #14 by allowing users to move individual tabs up and down within a tabset
+
+-  Closes #14 by allowing users to move individual tabs up and down within a tabset
 
 Version 1.17:
-* Prevent total data loss by not erasing the data before setting it.
+
+-  Prevent total data loss by not erasing the data before setting it.
 
 Version 1.16:
-* Improved layout of delete buttons for tabs within tabsets.
+
+-  Improved layout of delete buttons for tabs within tabsets.
 
 Version 1.15:
-* Fixed the missing tabset import button.
+
+-  Fixed the missing tabset import button.
 
 Version 1.14:
-* The rename tabset prompt defaults to the current tabset name.
+
+-  The rename tabset prompt defaults to the current tabset name.
 
 Version 1.13:
-* You can now rename tabsets.
+
+-  You can now rename tabsets.
 
 Version 1.12:
-* You can now remove individual tabs from a tabset with the delete button beside each tab.
+
+-  You can now remove individual tabs from a tabset with the delete button beside each tab.
 
 Version 1.11:
-* You can now add the current tab to an existing tabset with the plus button beside a tabset.
+
+-  You can now add the current tab to an existing tabset with the plus button beside a tabset.
 
 Version 1.10:
-* Expand icon changed in preparation for using the plus icon to add a tab to a tabset.
+
+-  Expand icon changed in preparation for using the plus icon to add a tab to a tabset.
 
 Version 1.9:
-* Basic support added for exporting and importing tabsets via their JSON representation. Being text, it can be copied and pasted in many places where a file might not be suitable.
+
+-  Basic support added for exporting and importing tabsets via their JSON representation. Being text, it can be copied and pasted in many places where a file might not be suitable.
 
 Version 1.8:
-* UI changes to make it more obvious that a tabset can be expanded, and made the name of the tabset the link to open all the tabs in that tabset. Also made delete an image so it's more compact/neater.
+
+-  UI changes to make it more obvious that a tabset can be expanded, and made the name of the tabset the link to open all the tabs in that tabset. Also made delete an image so it's more compact/neater.
 
 Version 1.7:
-* Bug fix for event tracking.
+
+-  Bug fix for event tracking.
 
 Version 1.6:
-* If the only open tab is a new tab, it'll be closed when you open a tabset. This makes opening a new window, and then a tabset feel more dedicated to the tabset.
+
+-  If the only open tab is a new tab, it'll be closed when you open a tabset. This makes opening a new window, and then a tabset feel more dedicated to the tabset.
 
 Version 1.5:
-* Make it clearer that the tabsets can be clicked to expand the tabs in them, which allows individual tabs to be opened.
+
+-  Make it clearer that the tabsets can be clicked to expand the tabs in them, which allows individual tabs to be opened.
 
 Version 1.4:
-* Version shown in the heading
+
+-  Version shown in the heading
 
 Version 1.3:
-* Code improvements and usage tracking
+
+-  Code improvements and usage tracking
 
 Version 1.2:
-* Better storage method allows far more tabsets to be saved.
-* New UI and icon to make it stand out a little better.
+
+-  Better storage method allows far more tabsets to be saved.
+-  New UI and icon to make it stand out a little better.
