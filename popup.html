@@ -12,8 +12,9 @@
 		<div ng-controller="TabsetsController">
 			<span ng-click="importTabset()" title="Import a tabset" class="import rhsImgBtn"></span>
 			<span>
-				<h1 style="display:inline-block;margin-block-start:0">{{name}}</h1>
-				<a href="#"><span style="margin-left:.5rem;cursor:pointer;" title="Show your thanks by buying the author a beer." ng-click="openUrl('https://monzo.me/bernhardhofmann')">Donate</span></a>
+				<h1 style="display: inline-block; margin-block-start: 0">{{name}}</h1>
+				<span>v{{version}}</span>
+				<a href="#"><span style="margin-left: 0.5rem; cursor: pointer" title="Show your thanks by buying the author a beer." ng-click="openUrl('https://monzo.me/bernhardhofmann')">Donate</span></a>
 			</span>
 
 			<form name="newTabsetForm">
