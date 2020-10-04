@@ -1,6 +1,6 @@
 {
 	"name": "Tabsets",
-	"version": "1.21",
+	"version": "1.22",
 	"manifest_version": 2,
 	"description": "Stores sets of tabs for later viewing.",
 	"icons": {
@@ -17,10 +17,7 @@
 		"http://*/*",
 		"https://*/*",
 		"storage",
-		"contextMenus",
-		"cookies",
-		"tabs",
-		"notifications"
+		"tabs"
 	],
 	"content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com; object-src 'self'"
 }
