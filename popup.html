@@ -10,7 +10,8 @@
 	</head>
 	<body>
 		<div ng-controller="TabsetsController">
-			<span ng-click="importTabset()" title="Import a tabset" class="import rhsImgBtn"></span>
+			<span ng-click="importTabset()" title="Import one or more tabsets" class="import rhsImgBtn"></span>
+			<span ng-click="exportAllTabsets()" title="Export all tabsets" class="export rhsImgBtn"></span>
 			<span>
 				<h1 style="display: inline-block; margin-block-start: 0">{{name}}</h1>
 				<span>v{{version}}</span>

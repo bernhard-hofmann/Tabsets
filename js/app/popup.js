@@ -149,18 +149,48 @@ myApp.controller('TabsetsController', function ($scope) {
 
 	$scope.importDone = function (tabset) {
 		try {
-			var importedTabset = JSON.parse($scope.importedTabset);
-			if (!importedTabset.hasOwnProperty('name') || !importedTabset.hasOwnProperty('tabs') || !importedTabset.hasOwnProperty('created')
-				|| !Array.isArray(importedTabset.tabs)) {
-				throw 'Invalid object';
+			var action = "Imported";
+			var importedTabsets = [];
+			var imported = JSON.parse($scope.importedTabset);
+			if (Array.isArray(imported)) {
+				action = "ImportedMultiple";
+				importedTabsets = imported;
+			} else {
+				importedTabsets.push(imported);
 			}
 
-			$scope.tabsets.push(importedTabset);
+			importedTabsets.forEach(function (importedTabset) {
+				if (!importedTabset.hasOwnProperty('name') || !importedTabset.hasOwnProperty('tabs') || !importedTabset.hasOwnProperty('created')
+					|| !Array.isArray(importedTabset.tabs)) {
+					throw 'Invalid object';
+				}
+				$scope.tabsets.push(importedTabset);
+			});
+
 			storeTabsets($scope.tabsets);
 
 			$scope.importedTabset = '';
 			$scope.importing = false;
 			_gaq.push(['_trackEvent', 'Tabset', 'Imported']);
+		} catch (e) {
+			alert("Sorry, that tabset text doesn\'t appear to be correctly formatted.");
+		}
+	};
+
+	$scope.exportAllTabsets = function () {
+		try {
+			var allTabsets = JSON.parse(JSON.stringify($scope.tabsets));
+
+			allTabsets.forEach(function (temp) {
+				// Strip Angular properties
+				delete temp.$$hashKey;
+				for (var i = temp.tabs.length - 1; i >= 0; i--) {
+					delete temp.tabs[i].$$hashKey;
+				}
+			});
+
+			$scope.exportedTabset = JSON.stringify(allTabsets);
+			_gaq.push(['_trackEvent', 'Tabset', 'ExportAllTabsets']);
 		} catch (e) {
 			alert("Sorry, that tabset text doesn\'t appear to be correctly formatted.");
 		}
